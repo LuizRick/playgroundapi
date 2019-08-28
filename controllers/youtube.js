@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-
+const ytdlcore = require('ytdl-core');
 
 router.get("/get-yt-video-info", (req, res) => {
     const youtubeUrl = req.query.yt_url;
@@ -53,5 +53,19 @@ router.get('/yt-download', (req, res) => {
         quality
     }).pipe(res);
 })
+
+
+function qsToJson(queryString) {
+	let res = {};
+	let params = queryString.split("&");
+	let keyValuePair, key, value;
+	for (let i in params) {
+		keyValuePair = params[i].split("=");
+		key = keyValuePair[0];
+		value = keyValuePair[1];
+		res[key] = decodeURIComponent(value);
+	}
+	return res;
+}
 
 module.exports = router;
