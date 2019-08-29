@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
-router.post(`/api/mangaslivre`, (req,res) => {
+router.post(`/mangaslivre`, (req,res) => {
     const data = req.body.BodyRequest
     const options = {
         method:'POST',

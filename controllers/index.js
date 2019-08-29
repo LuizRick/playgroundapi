@@ -9,7 +9,7 @@ router.use(function(req, res, next) {
 });
 
 
-router.use(require('./mangaslivres'));
-router.use(require('./youtube'));
+router.use('/api',require('./mangaslivre/mangaslivres'));
+router.use('/api',require('./youtube/youtube'));
 
 module.exports = router;
