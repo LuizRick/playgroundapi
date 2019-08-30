@@ -91,7 +91,7 @@ function onListening() {
   debug('Listening on ' + bind);
   console.log(`listem on port ${bind}`);
 
-  Ffmpeg.setFfmpegPath('C:/Users/luizmonteiro/Documents/projects/ffmpeg/ffmpeg-20190826-0821bc4-win64-static/bin/ffmpeg.exe');
-  Ffmpeg.setFfprobePath('C:/Users/luizmonteiro/Documents/projects/ffmpeg/ffmpeg-20190826-0821bc4-win64-static/bin/ffprobe');
-  Ffmpeg.setFlvtoolPath('C:/Users/luizmonteiro/Documents/projects/ffmpeg/ffmpeg-20190826-0821bc4-win64-static/bin/ffplay');
+  Ffmpeg.setFfmpegPath(process.env.FFMPEG_PATH || 'C:/Users/luizmonteiro/Documents/projects/ffmpeg/ffmpeg-20190826-0821bc4-win64-static/bin/ffmpeg.exe');
+  Ffmpeg.setFfprobePath(process.env.FFPROBE_PATH || 'C:/Users/luizmonteiro/Documents/projects/ffmpeg/ffmpeg-20190826-0821bc4-win64-static/bin/ffprobe');
+  Ffmpeg.setFlvtoolPath(process.env.FLVMETA_PATH || 'C:/Users/luizmonteiro/Documents/projects/ffmpeg/ffmpeg-20190826-0821bc4-win64-static/bin/ffplay');
 }
