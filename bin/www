@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('playgroundservice:server');
 var http = require('http');
+const Ffmpeg = require('fluent-ffmpeg');
 
 /**
  * Get port from environment and store in Express.
@@ -89,4 +90,8 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
   console.log(`listem on port ${bind}`);
+
+  Ffmpeg.setFfmpegPath('C:/Users/luizmonteiro/Documents/projects/ffmpeg/ffmpeg-20190826-0821bc4-win64-static/bin/ffmpeg.exe');
+  Ffmpeg.setFfprobePath('C:/Users/luizmonteiro/Documents/projects/ffmpeg/ffmpeg-20190826-0821bc4-win64-static/bin/ffprobe');
+  Ffmpeg.setFlvtoolPath('C:/Users/luizmonteiro/Documents/projects/ffmpeg/ffmpeg-20190826-0821bc4-win64-static/bin/ffplay');
 }
