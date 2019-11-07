@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node --experimental-modules ./bin/www",
+    "start": "nodemon ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,6 +14,10 @@
     "express": "^4.17.1",
     "ffmpeg": "0.0.4",
     "fluent-ffmpeg": "^2.1.2",
+    "mongodb": "^3.3.3",
     "ytdl-core": "^0.29.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
   }
 }

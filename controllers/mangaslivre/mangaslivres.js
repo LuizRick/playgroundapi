@@ -1,6 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const router = express.Router();
+const mongodb = require('mongodb')
 
 router.post(`/mangaslivre`, (req,res) => {
     const data = req.body.BodyRequest
@@ -20,6 +21,5 @@ router.post(`/mangaslivre`, (req,res) => {
        res.send('erro')
    })
 })
-
 
 module.exports = router;
