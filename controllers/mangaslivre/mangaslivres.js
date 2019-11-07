@@ -22,4 +22,13 @@ router.post(`/mangaslivre`, (req,res) => {
    })
 })
 
+router.post(`/save-manga-info`, (req, res) => {
+    const MongoClient = mongodb.MongoClient
+    const url = "mongodb://localhost:27017/"
+    MongoClient.connect(url, (err, db) => {
+        if(err) throw err;
+        db.close()
+    })
+ })
+
 module.exports = router;
