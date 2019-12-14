@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./bin/www",
+    "debug": "nodemon --inspect ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "prod": "node dist/api.bundle.js"

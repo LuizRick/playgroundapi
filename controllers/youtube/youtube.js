@@ -38,7 +38,7 @@ router.get("/yt-info", (req, res) => {
     const youtubeUrl = req.query.yt_url;
     const videoId = youtubeUrl.split("?")[1].match(/v=([^&]+)/)[1];
     ytdlcore.getInfo(videoId, (err, info) => {
-        if (err) res.send(err)
+        if (err) res.status(204).end()
         else res.send(info)
     })
 })
@@ -48,16 +48,24 @@ router.get('/yt-download', (req, res) => {
     const youtubeUrl = req.query.yt_url;
     const quality = req.query.quality;
     const name = req.query.name || "video-youtube";
+    const videoId = youtubeUrl.split("?")[1].match(/v=([^&]+)/)[1];
+    
+    ytdlcore.getInfo(videoId, (err, info) => {
+        if (err) res.status(204).end()
+    })
 
     const stream = ytdlcore(youtubeUrl, {
         format: 'mp4',
         quality
     });
 
+
     if (quality.indexOf("audio") != -1) {
         res.header('Content-Disposition', `attachment; filename="${name}.mp3"`);
+        res.header('Content-Type', 'audio/mpeg');
         const proc = new ffmpeg({ source: stream });
         proc.withAudioCodec('libmp3lame')
+            .on(`error`, (err) =>  console.log(err))
             .toFormat('mp3')
             .output(res)
             .run();
