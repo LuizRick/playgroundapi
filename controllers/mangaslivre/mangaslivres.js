@@ -1,7 +1,8 @@
 const express = require('express');
 const axios = require('axios');
 const router = express.Router();
-const mongodb = require('mongodb')
+const mongodb = require('mongodb');
+const Jikan = require('jikan-node');
 const url = "mongodb://localhost:27017/"
 
 
@@ -99,5 +100,27 @@ router.post('/saveCollection', (req, res) => {
             dbo.collection(collection).insertOne(req.body.payload, collectionSaved.bind(this));
     })
 })
+
+router.get('/myanimelist', (req, res) => {
+    const mal = new Jikan();
+    mal.findAnime('11597', 'episodes',1)
+    .then((info) => res.send(info))
+    .catch((err) => res.send(err));
+});
+
+router.get('/mal-findbyName', (req, res) => {
+    const mal = new Jikan();
+    mal.search('anime', req.query.name,{page: 1})
+    .then((info) => res.send(info))
+    .catch((err) => res.send(err));
+});
+
+
+router.get('/mal-season', (req, res) => {
+    const mal = new Jikan();
+    mal.findSeason(req.query.season, req.query.year)
+    .then((info) => res.send(info))
+    .catch((err) => res.status(500).send(err));
+});
 
 module.exports = router;
