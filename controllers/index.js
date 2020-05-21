@@ -11,5 +11,6 @@ router.use(function(req, res, next) {
 
 router.use('/api',require('./mangaslivre/mangaslivres'));
 router.use('/api',require('./youtube/youtube'));
+router.use('/api', require('./study/main'));
 
 module.exports = router;

@@ -73,6 +73,8 @@ router.get('/yt-download', (req, res) => {
         res.header('Content-Disposition', `attachment; filename="${name}.mp4"`);
         stream.pipe(res);
     }
+
+    //youtube-dl -x --embed-thumbnail --audio-format mp3 https://www.youtube.com/watch?v=tJLITSxoNF8
 })
 
 
