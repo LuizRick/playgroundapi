@@ -38,7 +38,7 @@ router.get('/get-subjects', (req, res) => {
             resultado: err.message
         })
         let dbo = db.db(databasename);
-        dbo.collection(collection).find({}).toArray((err, result) => {
+        dbo.collection(collection).find(req.body).toArray((err, result) => {
             if (err) res.send({
                 status: 500,
                 resultado: err.message
